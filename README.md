@@ -10,11 +10,11 @@ This is a multi project visual studio template that created using Visual Studio 
 
 All related layers are combined using references.
 
-Image
+![](https://github.com/bayramucuncu/B3.Web.Template.V1/blob/master/docs/e.PNG)
 
 ## Tempalte Usage
 
-Download the project template zip file. Move it to template folder of Visual Studio. I am using (C:\Users\User\Documents\Visual Studio 2019\Templates\ProjectTemplates)
+[Download](https://github.com/bayramucuncu/B3.Web.Template.V1/blob/master/template/B3WebTemplate.zip) the project template zip file. Move it to template folder of Visual Studio. I am using (C:\Users\User\Documents\Visual Studio 2019\Templates\ProjectTemplates)
 
 Open Visual Studion 2019 and add new project.
 
