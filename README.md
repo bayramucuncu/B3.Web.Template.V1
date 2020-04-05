@@ -7,6 +7,7 @@ This is a multi project visual studio template that created using Visual Studio 
 - Application services layer (B3.Applcation)
 - Data access layer (B3.EntityFramework)
 - Domain layer (B3.Domain)
+- Infrastructure layer (B3.Infrastructure)
 
 All related layers are combined using references.
 
