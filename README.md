@@ -18,12 +18,12 @@ Download the project template zip file. Move it to template folder of Visual Stu
 
 Open Visual Studion 2019 and add new project.
 
-image
+![](https://github.com/bayramucuncu/B3.Web.Template.V1/blob/master/docs/b3newproj.PNG)
 
 Add project name.
 
-image
+![](https://github.com/bayramucuncu/B3.Web.Template.V1/blob/master/docs/b3webname.PNG)
 
 Created project solution is ready.
 
-image
+![](https://github.com/bayramucuncu/B3.Web.Template.V1/blob/master/docs/b3sln.PNG)
