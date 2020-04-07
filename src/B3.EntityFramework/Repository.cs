@@ -18,26 +18,23 @@ namespace B3.EntityFramework
             _dbSet = context.Set<TEntity>();
         }
 
-        public async Task<TEntity> Add(TEntity entity)
+        public TEntity Add(TEntity entity)
         {
-            await _dbSet.AddAsync(entity);
-            await _context.SaveChangesAsync();
+            _dbSet.Add(entity);
 
             return entity;
         }
 
-        public async Task<TEntity> Update(TEntity entity)
+        public TEntity Update(TEntity entity)
         {
             _dbSet.Update(entity);
-            await _context.SaveChangesAsync();
 
             return entity;
         }
 
-        public async Task<TEntity> Delete(TEntity entity)
+        public TEntity Delete(TEntity entity)
         {
             _dbSet.Remove(entity);
-            await _context.SaveChangesAsync();
 
             return entity;
         }
@@ -55,6 +52,11 @@ namespace B3.EntityFramework
         public IQueryable<TEntity> OrderBy<TKey>(Expression<Func<TEntity, TKey>> orderBy, bool isDesc)
         {
             return isDesc ? _dbSet.OrderByDescending(orderBy) : _dbSet.OrderBy(orderBy);
+        }
+
+        public async Task Save()
+        {
+            await _context.SaveChangesAsync();
         }
     }
 }
