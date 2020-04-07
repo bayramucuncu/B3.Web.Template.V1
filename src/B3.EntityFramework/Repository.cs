@@ -54,7 +54,7 @@ namespace B3.EntityFramework
             return isDesc ? _dbSet.OrderByDescending(orderBy) : _dbSet.OrderBy(orderBy);
         }
 
-        public async Task Save()
+        public async Task SaveAsync()
         {
             await _context.SaveChangesAsync();
         }

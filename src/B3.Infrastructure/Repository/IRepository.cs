@@ -15,6 +15,6 @@ namespace B3.Infrastructure.Repository
         IQueryable<TEntity> Where(Expression<Func<TEntity, bool>> predicate);
         IQueryable<TEntity> OrderBy<TKey>(Expression<Func<TEntity, TKey>> orderBy, bool isDesc);
 
-        Task Save();
+        Task SaveAsync();
     }
 }
