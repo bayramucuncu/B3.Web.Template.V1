@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using AutoMapper;
 
 namespace B3.Infrastructure.AutoMapper
@@ -20,6 +21,11 @@ namespace B3.Infrastructure.AutoMapper
         public TDestination Map<TSource, TDestination>(TSource source, TDestination destination)
         {
             return Mapper.Map(source, destination);
+        }
+
+        public object Map(object source, Type sourceType, Type destinationType)
+        {
+            return Mapper.Map(source, sourceType, destinationType);
         }
 
         public IQueryable<TDestination> ProjectTo<TDestination>(IQueryable source)

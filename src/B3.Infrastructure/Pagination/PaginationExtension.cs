@@ -1,5 +1,7 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using B3.Infrastructure.AutoMapper;
 using Microsoft.EntityFrameworkCore;
 
 namespace B3.Infrastructure.Pagination
@@ -30,6 +32,14 @@ namespace B3.Infrastructure.Pagination
             var pageInfo = new PageInfo(count, page, pageSize);
 
             return new PagedResult<T>(items, pageInfo);
+        }
+
+        public static IPagedResult<TDest> MapToPagedResult<TSource, TDest>(this IPagedResult<TSource> pagedResult, IObjectMapper mapper)
+            where TDest : class
+        {
+            var mapped = (IList<TDest>)mapper.Map(pagedResult.Data.AsEnumerable(), pagedResult.Data.GetType(), typeof(IEnumerable<TDest>));
+
+            return new PagedResult<TDest>(mapped, pagedResult.PageInfo);
         }
     }
 }
