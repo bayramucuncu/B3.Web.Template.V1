@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using B3.WebApi.Security;
 using Microsoft.AspNetCore.Mvc;
 
 namespace B3.WebApi.Controllers

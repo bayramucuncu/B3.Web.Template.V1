@@ -1,14 +1,15 @@
-using System;
-using System.Collections;
 using B3.Infrastructure.DependencyInjection;
 using B3.Infrastructure.Reflection;
 using B3.WebApi.ApiConsistency;
 using B3.WebApi.ApiFilters;
+using B3.WebApi.Middleware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
+using System.Collections;
 
 namespace B3.WebApi
 {
@@ -25,6 +26,11 @@ namespace B3.WebApi
         {
             LoadDependencyModules(services);
 
+            services.AddCors(corsOptions =>
+            {
+                corsOptions.AddPolicy("DevPolicy", builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            });
+
             services.AddControllers(options =>
             {
                 options.Filters.Add<ApiResponseWrapperAttribute>();
@@ -37,6 +43,8 @@ namespace B3.WebApi
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseDevelopmentUser();
+                app.UseCors("DevPolicy");
             }
             
             app.UseRouting();
