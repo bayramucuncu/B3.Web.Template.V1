@@ -12,9 +12,23 @@ namespace B3.Infrastructure.Reflection
         {
             var referencedPaths = Directory.GetFiles(currentDomain.BaseDirectory, searchPattern).ToList();
 
-            var assembly = referencedPaths.Select(path => currentDomain.Load(AssemblyName.GetAssemblyName(path)));
+            var assemblies = new List<Assembly>();
 
-            var types = assembly.SelectMany(s => s.GetTypes().Where(t =>
+            foreach (var path in referencedPaths)
+            {
+                try
+                {
+                    var assembly = currentDomain.Load(AssemblyName.GetAssemblyName(path));
+
+                    assemblies.Add(assembly);
+                }
+                catch
+                {
+                    // ignored for unmanaged assemblies.
+                }
+            }
+
+            var types = assemblies.SelectMany(s => s.GetTypes().Where(t =>
                     typeof(TType).IsAssignableFrom(t)
                     && !t.IsInterface
                     && !t.IsAbstract))
